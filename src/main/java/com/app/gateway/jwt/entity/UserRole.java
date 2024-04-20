@@ -3,8 +3,6 @@ package com.app.gateway.jwt.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.UUID;
-
 @Setter
 @Getter
 @Builder

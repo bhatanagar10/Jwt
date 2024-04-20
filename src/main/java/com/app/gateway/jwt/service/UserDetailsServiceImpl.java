@@ -1,7 +1,7 @@
 package com.app.gateway.jwt.service;
 
-import com.app.gateway.jwt.model.CustomUserDetails;
 import com.app.gateway.jwt.entity.UserInfo;
+import com.app.gateway.jwt.model.CustomUserDetails;
 import com.app.gateway.jwt.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

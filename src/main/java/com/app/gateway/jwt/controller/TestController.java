@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/v1/test")
+@RequestMapping("/api/v1")
 public class TestController {
-//    @PreAuthorize("hasRole('ADMIN')")
-    @GetMapping()
+    @PreAuthorize("hasAuthority('USER')")
+    @GetMapping("/test")
     public String test(){
         return "return from test";
     }

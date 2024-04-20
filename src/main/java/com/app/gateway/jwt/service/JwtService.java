@@ -11,8 +11,7 @@ import org.springframework.stereotype.Component;
 
 import java.security.Key;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.function.Function;
 
@@ -44,14 +43,12 @@ public class JwtService {
         return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
     }
     public String generateToken(String username, Set<UserRole> authorities){
-        Map<String, Object> claims = new HashMap<>();
-        authorities.forEach(p-> claims.put("role",p.getName()));
-        return createToken(claims, username);
-    }
-    private String createToken(Map<String, Object> claims, String username) {
-
+//        Map<String, Object> claims = new HashMap<>();
+//        authorities.forEach(p-> claims.put("role",p.getName()));
+        Set<String> role = new HashSet<>();
+            authorities.forEach(p-> role.add(p.getName()));
         return Jwts.builder()
-                .setClaims(claims)
+                .claim("scope",role)
                 .setSubject(username)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis()+ 100000000 * 60))
